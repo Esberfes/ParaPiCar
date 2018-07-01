@@ -1,0 +1,50 @@
+.btn_select{
+    position: relative;
+    display: block;
+    background: #000;
+    width: 120px; height: 40px;
+    border-radius: 20px;
+    border: 4px solid #ccc;
+    box-sizing: border-box;
+  }
+  .btn_select:before{
+    content: '';
+    position: absolute;
+    left: 15px; top: 0px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    transition: 0.2s;
+    
+  }
+  .check:checked + .btn_select:before{
+    content: '';
+    left: 65px
+  }
+  
+  .check{
+    visibility: hidden;
+    height: 0;
+  }
+  .rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    transform: translateX(-50%) rotate(90deg) ;
+    left: 50%;
+  }
+  .rotate-90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    transform: translateX(-50%) rotate(-90deg) ;
+    left: 50%;
+  }
+  .center-control{left: 50%; transform: translateX(-50%);}
+  .text-center{text-align: center !important;}
+  
+  

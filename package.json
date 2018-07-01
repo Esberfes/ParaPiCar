@@ -1,0 +1,9 @@
+{
+    "name": "pi-server",
+    "version": "0.0.1",
+    "description": "Raspberry Pi Server",
+    "dependencies": {
+        "express": "^4.15.2",
+        "socket.io": "^2.1.1"
+    }
+}

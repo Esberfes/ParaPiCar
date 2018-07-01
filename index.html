@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+    <title>Raspberry Pi</title>
+    <link rel="stylesheet" href="./bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="./jquery.js"  type="text/javascript"></script>
+    <script src="./socketio.js" type="text/javascript" ></script>
+
+  </head>
+
+  <body>
+    <div class="container">
+        <h3>Raspberry Pi</h3>
+
+        <div class="row justify-content-center">
+
+            <div class="col-12  text-center">
+                <h3 style="padding: 0; margin:0;">LIGHTS</h3>
+                <input class="check" type="checkbox" id='light'>
+                <label for='light' class='btn_select center-control'></label>  
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-3 text-center">
+                <h3 style="padding-bottom: 10px;">LEFT</h3>
+                <input class="check" type="checkbox" id='left'>
+                <label for='left' class='btn_select rotate-90'></label>  
+            </div>
+            <div class="col-3 text-center">
+                <h3 style="padding-bottom: 10px;">FORW.</h3>
+
+                <input class="check" type="checkbox" id='backward'>
+                <label  for='backward' class='btn_select rotate90'></label>  
+
+                <h3 style="padding-top: 25px;">BACK.</h3>
+            </div>
+            <div class="col-3 text-center">
+                <h3 style="padding-bottom: 10px;">RIGHT</h3>
+                <input class="check" type="checkbox" id='right'>
+                <label for='right' class='btn_select rotate-90'></label>  
+            </div>
+            <div class="col-3 text-center">
+                <h3 style="padding-bottom: 10px;">GAS</h3>
+                <input class="check" type="checkbox" id='gas'>
+                <label for='gas' class='btn_select rotate-90'></label>  
+            </div>
+        </div>
+
+    </div>
+    
+
+    
+
+  </body>
+
+  <script>
+    var socket = io();
+
+    $("#light").change(function(){
+        if($(this).is(':checked')){
+            socket.emit('light', true );
+        }else {
+            socket.emit('light', false );
+        }
+    });
+
+    socket.on('light', function(msg){
+        $("#light").prop( "checked", msg );
+    });
+
+    $("#left").change(function(){
+        if($(this).is(':checked')){
+            socket.emit('left', true );
+        }else {
+            socket.emit('left', false );
+        }
+    });
+
+    socket.on('left', function(msg){
+        $("#left").prop( "checked", msg );
+    });
+   
+    $("#right").change(function(){
+        if($(this).is(':checked')){
+            socket.emit('right', true );
+        }else {
+            socket.emit('right', false );
+        }
+    });
+
+    socket.on('right', function(msg){
+        $("#right").prop( "checked", msg );
+    });
+
+    $("#backward").change(function(){
+        if($(this).is(':checked')){
+            socket.emit('backward', true );
+        }else {
+            socket.emit('backward', false );
+        }
+    });
+
+    socket.on('backward', function(msg){
+        $("#backward").prop( "checked", msg );
+    });
+
+    $("#gas").change(function(){
+        if($(this).is(':checked')){
+            socket.emit('gas', true );
+        }else {
+            socket.emit('gas', false );
+        }
+    });
+
+    socket.on('gas', function(msg){
+        $("#gas").prop( "checked", msg );
+    });
+    
+  </script>
+</html>
