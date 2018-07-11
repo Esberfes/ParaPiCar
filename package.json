@@ -4,6 +4,8 @@
     "description": "Raspberry Pi Server",
     "dependencies": {
         "express": "^4.15.2",
+        "onoff": "^3.1.0",
+        "python-shell": "^0.5.0",
         "socket.io": "^2.1.1"
     }
 }

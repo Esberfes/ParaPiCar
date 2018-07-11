@@ -52,7 +52,7 @@
                 <label for='gas' class='btn_select rotate-90'></label>  
             </div>
         </div>
-
+        <iframe width="800" height="600" id="iframe" src="" frameborder="0"></iframe>
     </div>
     
 
@@ -61,6 +61,8 @@
   </body>
 
   <script>
+    document.getElementById("iframe").src = "http://" + window.location.hostname + ":8081";
+
     var socket = io();
 
     $("#light").change(function(){
@@ -122,6 +124,9 @@
     socket.on('gas', function(msg){
         $("#gas").prop( "checked", msg );
     });
-    
+
+    socket.on('position', function(msg){
+        console.log(msg[0]);
+    });
   </script>
 </html>

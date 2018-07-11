@@ -4,6 +4,12 @@ var io = require('socket.io')(http);
 var express = require('express');
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 
+var PythonShell = require('python-shell');
+let fileName = "magneto.py";
+let filePath = "/home/pi/server";
+
+
+
 //GPIO VARS
 
 //Lights
@@ -145,6 +151,13 @@ io.on('connection', function(socket){
         io.emit('right', left);
         io.emit('gas', gas);
     });
+
+    setInterval(function(){ 
+        PythonShell.run(fileName, { scriptPath: filePath }, function (err, results) {
+            io.emit('position',  results);
+            console.log(results);
+        });
+    }, 1000);
 
 });
 
